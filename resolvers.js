@@ -9,7 +9,7 @@
   },
   Query: {
     getPeople(root, args, context) {
-      return context.person.findAll();
+      return context.Person.findAll();
     },
     getPerson(root, args, context) {
       return context.Person.findById(args.id);
