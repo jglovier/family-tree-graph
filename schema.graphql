@@ -5,12 +5,18 @@
 
 """
 The Person type is the foundational type in this graph. Every person in the family tree can be accessed through this type.
+
+Reminder: Object types are specific to a GraphQL service, are defined with the `type` keyword, and start with a capital letter by convention (https://www.digitalocean.com/community/tutorials/graphql-graphql-sdl)
 """
 type Person {
   """
   The `id` field on `Person` maps to the database id for the record where the person's data is stored.
   """
-  id: Int
+  id: Int!
+  """
+  The name the person was known by to others most commonly.
+  """
+  knownName: String!
   """
   The first name of the person.
   """
@@ -18,15 +24,15 @@ type Person {
   """
   The middle name of the person.
   """
-  middleName: String
+  middleName: [String]
   """
   The current last name of the person, or their last name when they died.
   """
-  lastName: String
+  lastName: [String]
   """
   This field returns the aliases or nicknames of the Person.
   """
-  aliases: String
+  aliases: [String]
   """
   This field returns the immediate ancestors (parents) of the Person.
   """
@@ -46,7 +52,7 @@ type Person {
   """
   This field returns the occupation(s) of the Person.
   """
-  occupation: String
+  occupation: [String]
 }
 
 type Query {
