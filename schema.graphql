@@ -38,6 +38,10 @@ type Person {
   """
   parents: [Person]
   """
+  This field returns the partner for the Person.
+  """
+  partner: [Person]
+  """
   This field returns the entire set of ancestors for the Person.
   """
   ancestors: [Person]
