@@ -1,0 +1,59 @@
+# Family tree graph
+# -----------------
+# created for learning GraphQL better
+# referenced this article: https://spin.atomicobject.com/2018/01/31/create-graphql-api/
+
+"""
+The Person type is the foundational type in this graph. Every person in the family tree can be accessed through this type.
+"""
+type Person {
+  """
+  The `id` field on `Person` maps to the database id for the record where the person's data is stored.
+  """
+  id: Int
+  """
+  The first name of the person.
+  """
+  firstName: String
+  """
+  The middle name of the person.
+  """
+  middleName: String
+  """
+  The current last name of the person, or their last name when they died.
+  """
+  lastName: String
+  """
+  This field returns the aliases or nicknames of the Person.
+  """
+  aliases: String
+  """
+  This field returns the immediate ancestors (parents) of the Person.
+  """
+  parents: [Person]
+  """
+  This field returns the entire set of ancestors for the Person.
+  """
+  ancestors: [Person]
+  """
+  This field returns the immediate children of the Person.
+  """
+  children: [Person]
+  """
+  This field returns the entire set of known and stored descendants for the Person.
+  """
+  descendants: [Person]
+  """
+  This field returns the occupation(s) of the Person.
+  """
+  occupation: String
+}
+
+type Query {
+  getPeople: [Person]
+  getPerson(id: Int!): Person
+}
+
+schema {
+  query: Query
+}
